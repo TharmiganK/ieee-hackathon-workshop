@@ -26,6 +26,7 @@ The Social media REST service exposes the following resources:
 - Request payload binding
 - Data mapper
 - Ballerina HTTP client
+- HTTP generated client from OpenAPI specification
 
 ## Prerequisites
 
