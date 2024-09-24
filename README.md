@@ -29,7 +29,7 @@ The Social media REST service exposes the following resources:
 
 ## Prerequisites
 
-- Install the latest version of Ballerina
+- Install the latest version(SwanLake Update 10) of Ballerina
 - Set up VS code by installing the Ballerina extension
 
 ## Implementation
@@ -150,3 +150,13 @@ The Social media REST service exposes the following resources:
 17. Modify the `POST api/post` resource to validate the sentiment of the post by calling the
     sentiment analysis service. If the sentiment is negative, return a `400 - Bad Request` status
     code response.
+
+18. Generate a sentiment analysis client using the OpenAPI specification given in the following
+    path: `sentiment-api/sentiment_analysis_service.yaml`. Run the following command inside
+    the `social-media` directory to generate the client:
+
+    ```bash
+    bal openapi -i ../sentiment-api/sentiment_analysis_service.yaml --mode client --single-file
+    ```
+
+19. Replace the HTTP client with the generated client in the `POST api/post` resource.
