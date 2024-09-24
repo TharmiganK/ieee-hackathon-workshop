@@ -1,8 +1,15 @@
+import ballerina/sql;
+
 public type Post record {|
+    @sql:Column {name: "ID"}
     readonly int id;
+    @sql:Column {name: "USER_ID"}
     int userId;
+    @sql:Column {name: "DESCRIPTION"}
     string description;
+    @sql:Column {name: "TAGS"}
     string tags;
+    @sql:Column {name: "CATEGORY"}
     string category;
 |};
 
