@@ -7,12 +7,6 @@ import ballerinax/java.jdbc;
 string dbPath = check file:getAbsolutePath("database");
 string jdbcUrl = string `jdbc:h2:${dbPath}/POSTS`;
 
-
-table<Post> key(id) postsTable = table [
-    {id: 1, description: "Exploring Ballerina Language", tags: "ballerina, programming, language", category: "Technology", userId: 1},
-    {id: 2, description: "Introduction to Microservices", tags: "microservices, architecture, introduction", category: "Software Engineering", userId: 2}
-];
-
 function initDatabase(sql:Client dbClient) returns error? {
     _ = check dbClient->execute(`CREATE TABLE IF NOT EXISTS POSTS (ID INT AUTO_INCREMENT PRIMARY KEY, USER_ID INT, DESCRIPTION VARCHAR(255), TAGS VARCHAR(255), CATEGORY VARCHAR(255))`);
 }
