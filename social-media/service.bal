@@ -7,7 +7,7 @@ table<Post> key(id) postsTable = table [
 
 SentimentClient sentimentClient = check new;
 
-service /social\-media on new http:Listener(9090) {
+service /api on new http:Listener(9090) {
 
     resource function get posts(string? category) returns Post[] {
         if category is () {
