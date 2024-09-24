@@ -3,7 +3,7 @@
 ## Introduction
 
 This workshop will guide you through the process of creating a Ballerina REST API that will allow
-you to create, read, update, and delete social media posts. In the first part of the workshop, 
+you to create, read, update, and delete social media posts. In the first part of the workshop,
 the data will be stored in in-memory tables.
 
 The Social media REST service exposes the following resources:
@@ -37,12 +37,12 @@ The Social media REST service exposes the following resources:
 1. Create a new Ballerina project.
 
     ```bash
-    $ bal new social-media
+    bal new social-media
     ```
 
 2. Create a Ballerina HTTP service with the basepath: "/api".
 
-3. Define a Ballerina record to represent the post. An example JSON object representing a post is 
+3. Define a Ballerina record to represent the post. An example JSON object representing a post is
    as follows:
 
     ```json
@@ -63,9 +63,9 @@ The Social media REST service exposes the following resources:
     {
         "id": 1,
         "userId": 1,
-        "description": "This is a post",
-        "tags": "tag1, tag2",
-        "category": "category1"
+        "description": "Exploring Ballerina Language",
+        "tags": "ballerina, programming, language",
+        "category": "Technology"
     }
     ```
 
@@ -73,9 +73,9 @@ The Social media REST service exposes the following resources:
     {
         "id": 2,
         "userId": 2,
-        "description": "This is another post",
-        "tags": "tag3, tag4",
-        "category": "category2"
+        "description": "Introduction to Microservices",
+        "tags": "microservices, architecture, introduction",
+        "category": "Software Engineering"
     }
     ```
 

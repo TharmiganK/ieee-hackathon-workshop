@@ -1,8 +1,8 @@
 import ballerina/http;
 
 table<Post> key(id) postsTable = table [
-    {id: 1, description: "First Post", tags: "first, post", category: "General", userId: 1},
-    {id: 2, description: "Second Post", tags: "second, post", category: "General", userId: 2}
+    {id: 1, description: "Exploring Ballerina Language", tags: "ballerina, programming, language", category: "Technology", userId: 1},
+    {id: 2, description: "Introduction to Microservices", tags: "microservices, architecture, introduction", category: "Software Engineering", userId: 2}
 ];
 
 SentimentClient sentimentClient = check new;

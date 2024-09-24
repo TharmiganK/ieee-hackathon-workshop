@@ -42,7 +42,7 @@ Get sentiment analysis for a given text.
 ##### Content
 
 - **Type**: object
-- **Required**: 
+- **Required**:
   - `text`
 - **Properties**:
   - `text`:
