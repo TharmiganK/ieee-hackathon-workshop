@@ -12,7 +12,7 @@ public isolated client class SentimentClient {
     # + config - The configurations to be used when initializing the `connector` 
     # + serviceUrl - URL of the target service 
     # + return - An error if connector initialization failed 
-    public isolated function init(ConnectionConfig config =  {}, string serviceUrl = "http://localhost:9000/text-processing") returns error? {
+    public isolated function init(ConnectionConfig config =  {}, string serviceUrl = "http://localhost:9000/api") returns error? {
         http:ClientConfiguration httpClientConfig = {httpVersion: config.httpVersion, timeout: config.timeout, forwarded: config.forwarded, poolConfig: config.poolConfig, compression: config.compression, circuitBreaker: config.circuitBreaker, retryConfig: config.retryConfig, validation: config.validation};
         do {
             if config.http1Settings is ClientHttp1Settings {
@@ -44,8 +44,8 @@ public isolated client class SentimentClient {
     #
     # + headers - Headers to be sent with the request 
     # + return - Created 
-    resource isolated function post api/sentiment(Content payload, map<string|string[]> headers = {}) returns Sentiment|error {
-        string resourcePath = string `/api/sentiment`;
+    resource isolated function post sentiment(Content payload, map<string|string[]> headers = {}) returns Sentiment|error {
+        string resourcePath = string `/sentiment`;
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");

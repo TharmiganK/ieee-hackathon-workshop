@@ -36,7 +36,7 @@ service /api on new http:Listener(9090) {
     }
 
     resource function post posts(NewPost newPost) returns PostCreated|http:BadRequest|error {
-        Sentiment sentiment = check self.sentimentClient->/api/sentiment.post({text: newPost.description});
+        Sentiment sentiment = check self.sentimentClient->/sentiment.post({text: newPost.description});
         if sentiment.label != "pos" {
             return http:BAD_REQUEST;
         }
