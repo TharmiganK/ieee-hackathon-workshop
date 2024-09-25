@@ -1,4 +1,4 @@
-# IEEE Hackathon Workshop 1 - Part 1 - Social Media Service in Ballerina
+# IEEE Hackathon Workshop 1 - Designing a REST API with Ballerina
 
 ## Introduction
 
