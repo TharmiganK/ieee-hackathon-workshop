@@ -26,14 +26,16 @@ public type PostCreated record {|
     Post body;
 |};
 
+public type Meta record {|
+    string[] tags;
+    string category;
+|};
+
 public type PostWithMeta record {|
     int id;
     int userId;
     string description;
-    record {|
-        string[] tags;
-        string category;
-    |} meta;
+    Meta meta;
 |};
 
 function transformPost(Post post) returns PostWithMeta => {
