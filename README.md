@@ -1,10 +1,9 @@
-# IEEE Hackathon Workshop 1 - Designing a REST API with Ballerina
+# IEEE Hackathon Workshop - Designing a REST API with Ballerina
 
 ## Introduction
 
 This workshop will guide you through the process of creating a Ballerina REST API that will allow
-you to create, read, update, and delete social media posts. In the first part of the workshop,
-the data will be stored in in-memory tables.
+you to create, read, update, and delete social media posts.
 
 The Social media REST service exposes the following resources:
 
@@ -15,6 +14,10 @@ The Social media REST service exposes the following resources:
 | `POST api/post`                | Create a new post                                  |
 | `DELETE api/posts/{id}`        | Delete the post specified by the id                |
 | `GET api/posts/{id}/meta`      | Get the post specified by the id with the metadata |
+
+This workshop has two sessions. In the first session, you will create a Ballerina social media
+service which will use an in-memory table to store the posts. In the second session, you will
+integrate a H2 database to store the posts.
 
 ## Areas covered
 
@@ -27,13 +30,15 @@ The Social media REST service exposes the following resources:
 - Data mapper
 - Ballerina HTTP client
 - HTTP generated client from OpenAPI specification
+- Debugging the Ballerina service
+- Integrating database
 
 ## Prerequisites
 
 - Install the latest version(SwanLake Update 10) of Ballerina
 - Set up VS code by installing the Ballerina extension
 
-## Implementation
+## Session 1 - Implementing a Ballerina REST service
 
 1. Create a new Ballerina project.
 
@@ -207,3 +212,45 @@ The Social media REST service exposes the following resources:
     - [OpenAPI tool](https://ballerina.io/learn/openapi-tool/)
 
 19. Replace the HTTP client with the generated client in the `POST api/post` resource.
+
+20. Run the Ballerina service in debug mode and test the service.
+
+    References:
+    - [Debug Ballerina programs](https://ballerina.io/learn/debug-ballerina-programs/)
+
+## Session 2 - Integrating a database
+
+Replace the in-memory table with a SQL database to store the posts. Here, we will use the in-memory
+H2 database. You can use any other databases(e.g., MySQL, PostgreSQL, MSSQL) by changing the
+client initialization.
+
+Import the following Ballerina modules to work with the H2 database:
+
+```ballerina
+import ballerina/sql;
+import ballerinax/java.jdbc;
+import ballerinax/h2.driver as _;
+```
+
+Use the following configurations for the datastore:
+
+- URL: `jdbc:h2:<path-of-the-project>/databases/SOCIAL_MEDIA`
+- Table name: `POSTS`
+- Fields:
+  - ID: INT, AUTO_INCREMENT
+  - USER_ID: INT
+  - DESCRIPTION: VARCHAR(255)
+  - TAGS: VARCHAR(255)
+  - CATEGORY: VARCHAR(255)
+
+> **Note**: Create the table if it does not exist.
+
+References:
+
+- [Data access simple query](https://ballerina.io/learn/by-example/mysql-query-operation/)
+- [Query with one result](https://ballerina.io/learn/by-example/mysql-query-row-operation/)
+- [Query with advanced mapping](https://ballerina.io/learn/by-example/mysql-query-column-mapping/)
+- [DML and DDL operations](https://ballerina.io/learn/by-example/mysql-execute-operation/)
+
+> **Note**: Refer to [Ballerina persist](https://ballerina.io/learn/bal-persist-overview/) feature
+> if you want more data persistence capabilities.
