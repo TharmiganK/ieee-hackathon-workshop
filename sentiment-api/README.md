@@ -7,7 +7,7 @@ This service provides sentiment analysis for text data. It is designed to analyz
 ### Base URL
 
 ```yaml
-{server}:{port}/text-processing
+{server}:{port}/api
 ```
 
 - Default server: `http://localhost`
@@ -15,7 +15,7 @@ This service provides sentiment analysis for text data. It is designed to analyz
 
 ### Endpoints
 
-#### POST /api/sentiment
+#### POST /sentiment
 
 Get sentiment analysis for a given text.
 

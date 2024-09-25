@@ -4,14 +4,14 @@ info:
   description: This service provides sentiment analysis for text data.
   version: 1.0.0
 servers:
-- url: "{server}:{port}/text-processing"
+- url: "{server}:{port}/api"
   variables:
     server:
       default: http://localhost
     port:
       default: "9000"
 paths:
-  /api/sentiment:
+  /sentiment:
     post:
       summary: Get sentiment analysis for a given text
       operationId: getSentiment
