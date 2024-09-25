@@ -1,3 +1,5 @@
+import ballerina/http;
+
 public type Post record {|
     readonly int id;
     int userId;
@@ -11,6 +13,11 @@ public type NewPost record {|
     string description;
     string tags;
     string category;
+|};
+
+public type PostCreated record {|
+    *http:Created;
+    Post body;
 |};
 
 public type PostWithMeta record {|

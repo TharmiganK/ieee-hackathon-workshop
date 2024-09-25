@@ -20,7 +20,7 @@ service /api on new http:Listener(9090) {
         return postsTable.hasKey(id) ? postsTable.get(id) : http:NOT_FOUND;
     }
 
-    resource function post posts(NewPost newPost) returns http:Created|http:BadRequest|error {
+    resource function post posts(NewPost newPost) returns PostCreated|http:BadRequest|error {
         Sentiment sentiment = check sentimentClient->/api/sentiment.post({text: newPost.description});
         if sentiment.label != "pos" {
             return http:BAD_REQUEST;
@@ -32,7 +32,7 @@ service /api on new http:Listener(9090) {
             ...newPost
         };
         postsTable.add(post);
-        return http:CREATED;
+        return <PostCreated>{body: post};
     }
 
     resource function delete posts/[int id]() returns http:NoContent {

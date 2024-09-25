@@ -122,10 +122,12 @@ The Social media REST service exposes the following resources:
     ```
 
 10. Implement the `POST api/post` resource to create a new post. The new post data is provided in
-    the request payload. Return a `201 - Created` status code response.
+    the request payload. Return a `201 - Created` status code response with the created post in the
+    body.
 
     References:
     - [Service payload binding](https://ballerina.io/learn/by-example/http-service-data-binding/)
+    - [Send different status code responses with payload](https://ballerina.io/learn/by-example/http-send-different-status-codes-with-payload/)
 
 11. Implement the `DELETE api/posts/{id}` resource to delete a specific post by its `id`. The `id`
     is provided in the path. Return a `204 - No Content` status code response.
