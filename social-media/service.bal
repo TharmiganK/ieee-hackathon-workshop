@@ -13,8 +13,8 @@ function initDatabase(sql:Client dbClient) returns error? {
 
 service /api on new http:Listener(9090) {
 
-    sql:Client dbClient;
-    SentimentClient sentimentClient;
+    final sql:Client dbClient;
+    final SentimentClient sentimentClient;
 
     function init() returns error? {
         self.dbClient = check new jdbc:Client(jdbcUrl);
