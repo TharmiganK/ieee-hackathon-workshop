@@ -35,8 +35,8 @@ integrate a H2 database to store the posts.
 
 ## Prerequisites
 
-- Install the latest version(SwanLake Update 10) of Ballerina
-- Set up VS code by installing the Ballerina extension
+- [Install the latest Ballerina Swan Lake distribution](https://ballerina.io/downloads/)
+- Set up [Visual Studio code](https://code.visualstudio.com/) by installing the [Ballerina extension](https://ballerina.io/learn/vs-code-extension/)
 
 ## Session 1 - Implementing a Ballerina REST service
 
