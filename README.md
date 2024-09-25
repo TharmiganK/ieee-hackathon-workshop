@@ -157,6 +157,7 @@ integrate a H2 database to store the posts.
 
     References:
     - [Data mapper](https://ballerina.io/learn/vs-code-extension/implement-the-code/data-mapper/)
+    - [RegExp operations](https://ballerina.io/learn/by-example/regexp-operations/)
 
 14. Implement the `GET api/posts/{id}/meta` resource to retrieve a specific post by its `id` with
     metadata. The `id` is provided in the path. Return a `404 - Not Found` status code response if
@@ -164,7 +165,7 @@ integrate a H2 database to store the posts.
 
 15. Define a Ballerina HTTP client to call the sentiment analysis service. The sentiment analysis
     service can be started by running the `sentiment-api` Ballerina project. The service will be
-    stated in the following URL: `http://localhost:9090/text-processing`.
+    stated in the following URL: `http://localhost:9090/api`.
 
     References:
     - [HTTP client](https://ballerina.io/learn/by-example/http-client-send-request-receive-response/)
@@ -184,7 +185,7 @@ integrate a H2 database to store the posts.
     ```
 
 17. Modify the `POST api/post` resource to validate the sentiment of the post by calling the
-    sentiment analysis `POST` resource: `/api/sentiment` with the post description in the following
+    sentiment analysis `POST` resource: `/sentiment` with the post description in the following
     format:
 
     ```json
