@@ -4,8 +4,8 @@ import ballerina/sql;
 import ballerinax/h2.driver as _;
 import ballerinax/java.jdbc;
 
-string dbPath = check file:getAbsolutePath("database");
-string jdbcUrl = string `jdbc:h2:${dbPath}/POSTS`;
+string dbPath = check file:getAbsolutePath("databases");
+string jdbcUrl = string `jdbc:h2:${dbPath}/SOCIAL_MEDIA`;
 
 function initDatabase(sql:Client dbClient) returns error? {
     _ = check dbClient->execute(`CREATE TABLE IF NOT EXISTS POSTS (ID INT AUTO_INCREMENT PRIMARY KEY, USER_ID INT, DESCRIPTION VARCHAR(255), TAGS VARCHAR(255), CATEGORY VARCHAR(255))`);
