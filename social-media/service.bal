@@ -11,7 +11,7 @@ function initDatabase(sql:Client dbClient) returns error? {
     _ = check dbClient->execute(`CREATE TABLE IF NOT EXISTS POSTS (ID INT AUTO_INCREMENT PRIMARY KEY, USER_ID INT, DESCRIPTION VARCHAR(255), TAGS VARCHAR(255), CATEGORY VARCHAR(255))`);
 }
 
-service /social\-media on new http:Listener(9090) {
+service /api on new http:Listener(9090) {
 
     sql:Client dbClient;
     SentimentClient sentimentClient;
@@ -35,14 +35,15 @@ service /social\-media on new http:Listener(9090) {
         return post is Post ? post : http:NOT_FOUND;
     }
 
-    resource function post posts(NewPost newPost) returns http:Created|http:BadRequest|error {
+    resource function post posts(NewPost newPost) returns PostCreated|http:BadRequest|error {
         Sentiment sentiment = check self.sentimentClient->/api/sentiment.post({text: newPost.description});
         if sentiment.label != "pos" {
             return http:BAD_REQUEST;
         }
 
-        _ = check self.dbClient->execute(`INSERT INTO POSTS (USER_ID, DESCRIPTION, TAGS, CATEGORY) VALUES (${newPost.userId}, ${newPost.description}, ${newPost.tags}, ${newPost.category})`);
-        return http:CREATED;
+        sql:ExecutionResult result = check self.dbClient->execute(`INSERT INTO POSTS (USER_ID, DESCRIPTION, TAGS, CATEGORY) VALUES (${newPost.userId}, ${newPost.description}, ${newPost.tags}, ${newPost.category})`);
+        string|int? id = result.lastInsertId;
+        return id is int ? <PostCreated>{body: {id, ...newPost}} : error("Error occurred while retriving the post id");
     }
 
     resource function delete posts/[int id]() returns http:NoContent|error {

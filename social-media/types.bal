@@ -1,4 +1,5 @@
 import ballerina/sql;
+import ballerina/http;
 
 public type Post record {|
     @sql:Column {name: "ID"}
@@ -18,6 +19,11 @@ public type NewPost record {|
     string description;
     string tags;
     string category;
+|};
+
+public type PostCreated record {|
+    *http:Created;
+    Post body;
 |};
 
 public type PostWithMeta record {|
