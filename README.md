@@ -175,7 +175,7 @@ The following diagram illustrates the architecture of the Social media REST serv
 
 16. Define a Ballerina HTTP client to call the sentiment analysis service. The sentiment analysis
     service can be started by running the `sentiment-api` Ballerina project. The service will be
-    stated in the following URL: `http://localhost:9090/api`.
+    started in the following URL: `http://localhost:9000/api`.
 
     References:
     - [HTTP client](https://ballerina.io/learn/by-example/http-client-send-request-receive-response/)
@@ -204,7 +204,7 @@ The following diagram illustrates the architecture of the Social media REST serv
     }
     ```
 
-    If the sentiment is negative, return a `400 - Bad Request` status
+    If the sentiment `label` is equals to `neg`, return a `400 - Bad Request` status
     code response.
 
     References:
