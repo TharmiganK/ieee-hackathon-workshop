@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: Sentiment Analysis Service
+  description: This service provides sentiment analysis for text data.
+  version: 1.0.0
+servers:
+- url: "{server}:{port}/api"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "9000"
+paths:
+  /sentiment:
+    post:
+      summary: Get sentiment analysis for a given text
+      operationId: getSentiment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Content'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sentiment'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+components:
+  schemas:
+    Content:
+      required:
+      - text
+      type: object
+      properties:
+        text:
+          type: string
+          example: This is a positive message
+    ErrorPayload:
+      required:
+      - message
+      - method
+      - path
+      - reason
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    Probability:
+      required:
+      - neg
+      - neutral
+      - pos
+      type: object
+      properties:
+        neg:
+          type: number
+          format: double
+          example: 0.30135019761690551
+        neutral:
+          type: number
+          format: double
+          example: 0.27119050546800266
+        pos:
+          type: number
+          format: double
+          example: 0.69864980238309449
+    Sentiment:
+      required:
+      - label
+      - probability
+      type: object
+      properties:
+        probability:
+          $ref: '#/components/schemas/Probability'
+        label:
+          $ref: '#/components/schemas/SentimentLabel'
+    SentimentLabel:
+      type: string
+      example: pos
+      enum:
+      - pos
+      - neutral
+      - neg
