@@ -131,18 +131,23 @@ The following diagram illustrates the architecture of the Social media REST serv
     }
     ```
 
-10. Implement the `POST api/post` resource to create a new post. The new post data is provided in
-    the request payload. Return a `201 - Created` status code response with the created post in the
-    body.
+10. Define a HTTP status code response record to represent a `201 - Created` response with the body
+    as the post.
+
+    References:
+    - [Send different status code responses with payload](https://ballerina.io/learn/by-example/http-send-different-status-codes-with-payload/)
+
+11. Implement the `POST api/post` resource to create a new post. The new post data is provided in
+    the request payload. Return the status code response created in the previous step.
 
     References:
     - [Service payload binding](https://ballerina.io/learn/by-example/http-service-data-binding/)
     - [Send different status code responses with payload](https://ballerina.io/learn/by-example/http-send-different-status-codes-with-payload/)
 
-11. Implement the `DELETE api/posts/{id}` resource to delete a specific post by its `id`. The `id`
+12. Implement the `DELETE api/posts/{id}` resource to delete a specific post by its `id`. The `id`
     is provided in the path. Return a `204 - No Content` status code response.
 
-12. Define a Ballerina record to represent the post with metadata. An example JSON object
+13. Define a Ballerina record to represent the post with metadata. An example JSON object
     representing the post metadata is as follows:
 
     ```json
@@ -157,25 +162,25 @@ The following diagram illustrates the architecture of the Social media REST serv
     }
     ```
 
-13. Define a data-mapper function to convert a post to a post with metadata. The tags should be
+14. Define a data-mapper function to convert a post to a post with metadata. The tags should be
     converted to an array by splitting with the comma.
 
     References:
     - [Data mapper](https://ballerina.io/learn/vs-code-extension/implement-the-code/data-mapper/)
     - [RegExp operations](https://ballerina.io/learn/by-example/regexp-operations/)
 
-14. Implement the `GET api/posts/{id}/meta` resource to retrieve a specific post by its `id` with
+15. Implement the `GET api/posts/{id}/meta` resource to retrieve a specific post by its `id` with
     metadata. The `id` is provided in the path. Return a `404 - Not Found` status code response if
     the post is not found.
 
-15. Define a Ballerina HTTP client to call the sentiment analysis service. The sentiment analysis
+16. Define a Ballerina HTTP client to call the sentiment analysis service. The sentiment analysis
     service can be started by running the `sentiment-api` Ballerina project. The service will be
     stated in the following URL: `http://localhost:9090/api`.
 
     References:
     - [HTTP client](https://ballerina.io/learn/by-example/http-client-send-request-receive-response/)
 
-16. Define a Ballerina record to represent the sentiment analysis response. An example JSON object
+17. Define a Ballerina record to represent the sentiment analysis response. An example JSON object
     representing the sentiment analysis response is as follows:
 
     ```json
@@ -189,7 +194,7 @@ The following diagram illustrates the architecture of the Social media REST serv
     }
     ```
 
-17. Modify the `POST api/post` resource to validate the sentiment of the post by calling the
+18. Modify the `POST api/post` resource to validate the sentiment of the post by calling the
     sentiment analysis `POST` resource: `/sentiment` with the post description in the following
     format:
 
@@ -206,7 +211,7 @@ The following diagram illustrates the architecture of the Social media REST serv
     - [HTTP client](https://ballerina.io/learn/by-example/http-client-send-request-receive-response/)
     - [HTTP client data-binding](https://ballerina.io/learn/by-example/http-client-data-binding/)
 
-18. Generate a sentiment analysis client using the OpenAPI specification given in the following
+19. Generate a sentiment analysis client using the OpenAPI specification given in the following
     path: `sentiment-api/sentiment_analysis_service.yaml`. Run the following command inside
     the `social-media` directory to generate the client:
 
@@ -217,9 +222,9 @@ The following diagram illustrates the architecture of the Social media REST serv
     References:
     - [OpenAPI tool](https://ballerina.io/learn/openapi-tool/)
 
-19. Replace the HTTP client with the generated client in the `POST api/post` resource.
+20. Replace the HTTP client with the generated client in the `POST api/post` resource.
 
-20. Run the Ballerina service in debug mode and test the service.
+21. Run the Ballerina service in debug mode and test the service.
 
     References:
     - [Debug Ballerina programs](https://ballerina.io/learn/debug-ballerina-programs/)
