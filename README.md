@@ -106,6 +106,7 @@ integrate a H2 database to store the posts.
 
     References:
     - [HTTP query parameter](https://ballerina.io/learn/by-example/http-query-parameter/)
+    - [Nil type](https://ballerina.io/learn/by-example/nil/)
 
 8. Implement the `GET api/posts/{id}` resource to retrieve a specific post by its `id`. The `id` is
    provided in the path. Return a `404 - Not Found` status code response if the post is not found.
