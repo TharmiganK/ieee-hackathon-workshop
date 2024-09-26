@@ -19,6 +19,10 @@ This workshop has two sessions. In the first session, you will create a Ballerin
 service which will use an in-memory table to store the posts. In the second session, you will
 integrate a H2 database to store the posts.
 
+The following diagram illustrates the architecture of the Social media REST service:
+
+![Social media service](images/social-media-architecture.png)
+
 ## Areas covered
 
 - Ballerina HTTP service
