@@ -19,6 +19,10 @@ This workshop has two sessions. In the first session, you will create a Ballerin
 service which will use an in-memory table to store the posts. In the second session, you will
 integrate a H2 database to store the posts.
 
+The following diagram illustrates the architecture of the Social media REST service:
+
+![Social media service](images/social-media-architecture.png)
+
 ## Areas covered
 
 - Ballerina HTTP service
@@ -106,6 +110,7 @@ integrate a H2 database to store the posts.
 
     References:
     - [HTTP query parameter](https://ballerina.io/learn/by-example/http-query-parameter/)
+    - [Nil type](https://ballerina.io/learn/by-example/nil/)
 
 8. Implement the `GET api/posts/{id}` resource to retrieve a specific post by its `id`. The `id` is
    provided in the path. Return a `404 - Not Found` status code response if the post is not found.
